@@ -1,0 +1,20 @@
+{
+  "name": "karinpang/test-server",
+  "description": "Test only",
+  "authors": [
+    {
+      "name": "KarinP"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^6.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Karinp\\": "class/"
+    },
+    "classmap": [
+      "class/model"
+    ]
+  }
+}
