@@ -13,8 +13,6 @@
     "psr-4": {
       "Karinp\\": "class/"
     },
-    "classmap": [
-      "class/model"
-    ]
+    "classmap": []
   }
 }
