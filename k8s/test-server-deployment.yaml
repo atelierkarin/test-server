@@ -7,13 +7,13 @@ spec:
   selector:
     matchLabels:
       component: server
-    template:
-      metadata:
-        labels:
-          component: server
-      spec:
-        containers:
-          - name: server
-            image: atelierkarin/test-server
-            ports:
-              - containerPort: 80
+  template:
+    metadata:
+      labels:
+        component: server
+    spec:
+      containers:
+        - name: server
+          image: atelierkarin/test-server
+          ports:
+            - containerPort: 80
