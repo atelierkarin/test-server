@@ -1,5 +1,5 @@
 # Build Images
-docker build -t atelierkarin/test-server:latest -t atelierkarin/test-server:$GIT_SHA .
+docker build -t atelierkarin/test-server:latest -t atelierkarin/test-server:$GIT_SHA -f ./server/Dockerfile ./server
 
 # Push to docker hub
 docker push atelierkarin/test-server:latest
