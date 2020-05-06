@@ -8,8 +8,8 @@ metadata:
 spec:
   rules:
     - http:
-      paths:
-        - path: /
-          backend:
-            serviceName: test-server-cluster-ip-service
-            servicePort: 5000
+        paths:
+          - path: /
+            backend:
+              serviceName: test-server-cluster-ip-service
+              servicePort: 5000
