@@ -16,4 +16,4 @@ WORKDIR /var/www/html
 EXPOSE 80
 
 # Copy something from builder phrase
-COPY --from=builder /app/vendor /var/www/html
+COPY --from=builder /app/* /var/www/html
