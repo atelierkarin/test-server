@@ -1,0 +1,34 @@
+sudo: required
+services:
+  - docker
+env:
+  global:
+    # Get Git SHA variable for versioning
+    - GIT_SHA=$(git rev-parse HEAD)
+    # Config GCP not to prompt y/n asking
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+before_install:
+  # Cloud Environment Config
+  - openssl aes-256-cbc -K $encrypted_9f3b5599b056_key -iv $encrypted_9f3b5599b056_iv -in service-account.json.enc -out service-account.json -d
+  - curl https://sdk.cloud.google.com | bash > /dev/null;
+  - source $HOME/google-cloud-sdk/path.bash.inc
+  - gcloud components update kubectl
+  - gcloud auth activate-service-account --key-file service-account.json
+  - gcloud config set project test-server-k8s
+  - gcloud config set compute/zone us-central1-c
+  - gcloud container clusters get-credentials test-server-cluster
+  # Docker login & Build Test
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+#  - docker build -t hkecl/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  # Run Test
+  - echo "No test :("
+#  - docker run hkecl/react-test npm test -- --converage
+
+deploy:
+  # Build images
+  provide: script
+  script: bash ./deploy.sh
+  on:
+    branch: master
